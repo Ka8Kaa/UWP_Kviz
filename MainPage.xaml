@@ -1,0 +1,25 @@
+﻿<Page
+    x:Class="UWP_Kviz.MainPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:UWP_Kviz"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+    <Grid>
+        <MenuBar HorizontalAlignment="Left" Margin="0, 0, 0, 960">
+            <MenuBarItem Title="File">
+                <MenuFlyoutItem Text="Exit" Click="MenuFlyoutItem_Click2"/>
+                <MenuFlyoutItem Text="Exit" Click="MenuFlyoutItem_Click"/>
+            </MenuBarItem>
+            <MenuBarItem Title="Help">
+                <MenuFlyoutItem Text="MainPage" Click="MenuFlyoutItem_Click_1"/>
+            </MenuBarItem>
+        </MenuBar>
+        <TextBlock x:Name="Pocetni" HorizontalAlignment="Left" Margin="595,496,0,0" TextWrapping="Wrap" Text="PROJEKTNI ZADATAK-Tko ne želi biti miljunaš" VerticalAlignment="Top" Height="132" Width="207"/>
+
+
+    </Grid>
+</Page>
