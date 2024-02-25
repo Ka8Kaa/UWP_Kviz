@@ -22,6 +22,20 @@
         </TextBlock>
         <TextBlock x:Name="PogresniOdgovori" HorizontalAlignment="Left" Margin="875,904,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Height="49" Width="152"/>
         <Button x:Name="Provjeri" Content="PROVJERI!" Margin="0,789,0,0" VerticalAlignment="Top" Height="47" Width="158" HorizontalAlignment="Center" Click="Provjeri_Click"/>
+        <TextBlock HorizontalAlignment="Left" Margin="16,257,0,0" TextWrapping="Wrap" Text="Prvi igrač:" VerticalAlignment="Top" Height="36" Width="109"/>
+        <TextBlock HorizontalAlignment="Left" Margin="21,334,0,0" TextWrapping="Wrap" Text="OIB:" VerticalAlignment="Top" Height="21" Width="67"/>
+        <TextBlock x:Name="PrviIgracOIB" HorizontalAlignment="Left" Margin="101,330,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Height="25" Width="117"/>
+        <TextBlock HorizontalAlignment="Left" Margin="21,384,0,0" TextWrapping="Wrap" Text="Ime:" VerticalAlignment="Top" Height="27" Width="63"/>
+        <TextBlock x:Name="PrviIgracIme" HorizontalAlignment="Left" Margin="106,385,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Height="28" Width="106"/>
+        <TextBlock HorizontalAlignment="Left" Margin="18,430,0,0" TextWrapping="Wrap" Text="Prezime:" VerticalAlignment="Top" Width="67"/>
+        <TextBlock x:Name="PrviIgracPrezime" HorizontalAlignment="Left" Margin="103,432,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="116" Height="30"/>
+        <TextBlock HorizontalAlignment="Left" Margin="1486,258,0,0" TextWrapping="Wrap" Text="Drugi igrač:" VerticalAlignment="Top" Width="102" Height="24"/>
+        <TextBlock HorizontalAlignment="Left" Margin="1541,327,0,0" TextWrapping="Wrap" Text="OIB:" VerticalAlignment="Top" Width="46"/>
+        <TextBlock x:Name="DrugiIgracOIB" HorizontalAlignment="Left" Margin="1649,324,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="124" Height="25"/>
+        <TextBlock HorizontalAlignment="Left" Margin="1542,381,0,0" TextWrapping="Wrap" Text="Ime:" VerticalAlignment="Top" Width="70"/>
+        <TextBlock x:Name="DrugiIgracIme" HorizontalAlignment="Left" Margin="1660,381,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="109" Height="27"/>
+        <TextBlock HorizontalAlignment="Left" Margin="1544,435,0,0" TextWrapping="Wrap" Text="Prezime:" VerticalAlignment="Top" Width="76"/>
+        <TextBlock x:Name="DrugiIgracPrezime" HorizontalAlignment="Left" Margin="1681,436,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Height="28" Width="113"/>
 
     </Grid>
 </Page>

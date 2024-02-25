@@ -24,6 +24,7 @@ namespace UWP_Kviz
         public Kviz()
         {
             this.InitializeComponent();
+            FetchLastTwoRows();
         }
 
         private void Započni_Click(object sender, RoutedEventArgs e)
@@ -221,6 +222,74 @@ namespace UWP_Kviz
                 optionRadioButton2.Content = options[1];
                 optionRadioButton3.Content = options[2];
                 optionRadioButton4.Content = options[3];
+            }
+        }
+        private void FetchLastTwoRows()
+        {
+            string connectionString = @"Data Source=D:\Skola\Niop 3g\UWP_Kviz\UWP_Kviz\Databaza.db;Version=3";
+
+            try
+            {
+                using (SQLiteConnection connection = new SQLiteConnection(connectionString))
+                {
+                    connection.Open();
+
+                    // SQLite query to fetch the last two rows from the table
+                    string query = "SELECT * FROM OsobniPodaci ORDER BY ID_Unos DESC LIMIT 2";
+
+                    using (SQLiteCommand command = new SQLiteCommand(query, connection))
+                    {
+                        using (SQLiteDataReader reader = command.ExecuteReader())
+                        {
+                            // Ensure there are rows returned
+                            if (reader.HasRows)
+                            {
+                                // Counter to keep track of which row we are on
+                                int rowCounter = 0;
+
+                                while (reader.Read())
+                                {
+                                    // Retrieve values from each column
+                                    int ID_Unos = reader.GetInt32(0);
+                                    long OIB = reader.GetInt64(1);
+                                    string ime = reader.GetString(2);
+                                    string prezime = reader.GetString(3);
+
+                                    // Assuming you have text blocks named accordingly: 
+                                    // idTextBlock1, questionTextBlock1, answerTextBlock1 for the second to last row
+                                    // idTextBlock2, questionTextBlock2, answerTextBlock2 for the last row
+
+                                    // Update text blocks with data from the current row
+                                    if (rowCounter == 0)
+                                    {
+                                        DrugiIgracOIB.Text = $"{OIB}";
+                                        DrugiIgracIme.Text = $"{ime}";
+                                        DrugiIgracPrezime.Text = $"{prezime}";
+                                    }
+                                    else if (rowCounter == 1)
+                                    {
+                                        PrviIgracOIB.Text = $"{OIB}";
+                                        PrviIgracIme.Text = $"{ime}";
+                                        PrviIgracPrezime.Text = $"{prezime}";
+                                    }
+
+                                    // Increment the row counter
+                                    rowCounter++;
+                                }
+                            }
+                            else
+                            {
+                                // Handle case when no rows are returned
+                                ErrorText.Text = "No rows returned by the query.";
+                            }
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                // Handle any exceptions (e.g., database connection error)
+                ErrorText.Text = "An error occurred: " + ex.Message;
             }
         }
     }

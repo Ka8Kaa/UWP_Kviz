@@ -23,7 +23,8 @@ public static class DatabaseHelper
                   );";
                 string createOsobniPodaciTableQuery = @"
                    CREATE TABLE IF NOT EXISTS OsobniPodaci(
-                    OIB BIGINT PRIMARY KEY NOT NULL,
+                    ID_Unos  INTEGER PRIMARY KEY AUTOINCREMENT,
+                    OIB BIGINT NOT NULL,
 	                Ime TEXT NOT NULL,
 	                Prezime TEXT NOT NULL
                   );";
