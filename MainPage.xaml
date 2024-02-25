@@ -11,14 +11,14 @@
     <Grid>
         <MenuBar HorizontalAlignment="Left" Margin="0, 0, 0, 960">
             <MenuBarItem Title="File">
-                <MenuFlyoutItem Text="Exit" Click="MenuFlyoutItem_Click2"/>
+                <MenuFlyoutItem Text="Kviz" Click="MenuFlyoutItem_Click_2"/>
                 <MenuFlyoutItem Text="Exit" Click="MenuFlyoutItem_Click"/>
             </MenuBarItem>
             <MenuBarItem Title="Help">
-                <MenuFlyoutItem Text="MainPage" Click="MenuFlyoutItem_Click_1"/>
+                <MenuFlyoutItem Text="About" Click="MenuFlyoutItem_Click_1"/>
             </MenuBarItem>
         </MenuBar>
-        <TextBlock x:Name="Pocetni" HorizontalAlignment="Left" Margin="595,496,0,0" TextWrapping="Wrap" Text="PROJEKTNI ZADATAK-Tko ne želi biti miljunaš" VerticalAlignment="Top" Height="132" Width="207"/>
+        <TextBlock x:Name="Pocetni" HorizontalAlignment="Left" Margin="879,485,0,0" TextWrapping="Wrap" Text="PROJEKTNI ZADATAK-Tko ne želi biti miljunaš" VerticalAlignment="Top" Height="132" Width="207"/>
 
 
     </Grid>

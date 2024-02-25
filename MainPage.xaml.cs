@@ -25,6 +25,7 @@ namespace UWP_Kviz
         public MainPage()
         {
             this.InitializeComponent();
+            DatabaseHelper.InitializeDatabase();
         }
         private void MenuFlyoutItem_Click(object sender, RoutedEventArgs e)
         {
@@ -34,6 +35,10 @@ namespace UWP_Kviz
         {
             Frame.Navigate(typeof(About));
         }
- 
+        private void MenuFlyoutItem_Click_2(object sender, RoutedEventArgs e)
+        {
+            Frame.Navigate(typeof(OsobniPodaci));
+        }
+
     }
 }

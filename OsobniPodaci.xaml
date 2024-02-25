@@ -17,13 +17,14 @@
                 <MenuFlyoutItem Text="MainPage" Click="MenuFlyoutItem_Click_1"/>
             </MenuBarItem>
         </MenuBar>
-        <Button x:Name="Zaigraj" Content="ZAIGRAJ" Margin="616,756,0,0" VerticalAlignment="Top" Height="74" Width="164" Click="Zaigraj_Click"/>
-        <TextBlock x:Name="OIB" HorizontalAlignment="Left" Margin="450,456,0,0" TextWrapping="Wrap" Text="OIB:" VerticalAlignment="Top" Height="35" Width="126"/>
-        <TextBox x:Name="OIBunos" HorizontalAlignment="Left" Margin="624,452,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="150"/>
-        <TextBlock x:Name="Ime" HorizontalAlignment="Left" Margin="452,528,0,0" TextWrapping="Wrap" Text="IME:" VerticalAlignment="Top" Height="33" Width="118"/>
-        <TextBox x:Name="Imeunos" HorizontalAlignment="Left" Margin="626,526,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="152"/>
-        <TextBlock x:Name="Prezime" HorizontalAlignment="Left" Margin="454,608,0,0" TextWrapping="Wrap" Text="PREZIME:" VerticalAlignment="Top" Height="31" Width="94"/>
-        <TextBox x:Name="Prezimeunos" HorizontalAlignment="Left" Margin="626,606,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="154"/>
-        <TextBlock x:Name="ErrorTextbox" HorizontalAlignment="Left" Margin="630,904,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Height="41" Width="142"/>
+        <Button x:Name="Zaigraj" Content="ZAIGRAJ!" Margin="787,735,0,0" VerticalAlignment="Top" Height="74" Width="164" Click="Zaigraj_Click"/>
+        <TextBlock x:Name="OIB" HorizontalAlignment="Left" Margin="572,447,0,0" TextWrapping="Wrap" Text="OIB:" VerticalAlignment="Top" Height="35" Width="95"/>
+        <TextBox x:Name="OIBunos" HorizontalAlignment="Left" Margin="795,446,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="155"/>
+        <TextBlock x:Name="Ime" HorizontalAlignment="Left" Margin="573,528,0,0" TextWrapping="Wrap" Text="IME:" VerticalAlignment="Top" Height="33" Width="102"/>
+        <TextBox x:Name="Imeunos" HorizontalAlignment="Left" Margin="796,528,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="152"/>
+        <TextBlock x:Name="Prezime" HorizontalAlignment="Left" Margin="563,616,0,0" TextWrapping="Wrap" Text="PREZIME:" VerticalAlignment="Top" Height="31" Width="94"/>
+        <TextBox x:Name="Prezimeunos" HorizontalAlignment="Left" Margin="794,614,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="154"/>
+        <TextBlock x:Name="ErrorTextbox" HorizontalAlignment="Left" Margin="802,896,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Height="41" Width="142"/>
+        <TextBlock HorizontalAlignment="Left" Margin="730,74,0,0" TextWrapping="Wrap" Text="PRIJE KVIZA... Molimo unesite Vaše podatke:" VerticalAlignment="Top" Height="70" Width="277"/>
     </Grid>
 </Page>

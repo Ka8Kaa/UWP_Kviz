@@ -1,5 +1,4 @@
 ﻿CREATE TABLE Questions (
-    ID INTEGER PRIMARY KEY AUTOINCREMENT,
     QuestionText TEXT NOT NULL,
     CorrectAnswer TEXT NOT NULL,
     WrongAnswer1 TEXT NOT NULL,
