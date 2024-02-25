@@ -19,6 +19,7 @@ namespace UWP_Kviz
     {
         private List<int> displayedQuestionIds = new List<int>();
         private int totalNumberOfQuestions = 2;
+        private Question currentQuestion; // Field to store the current question
 
         public Kviz()
         {
@@ -28,22 +29,22 @@ namespace UWP_Kviz
         private void Započni_Click(object sender, RoutedEventArgs e)
         {
             // Fetch a random question
-            Question randomQuestion = GetRandomQuestion();
+            currentQuestion = GetRandomQuestion();
 
             // Ensure that a question was fetched
-            if (randomQuestion != null)
+            if (currentQuestion != null)
             {
                 // Combine correct and wrong answers into a list
                 List<string> options = new List<string>();
-                options.Add(randomQuestion.CorrectAnswer);
-                options.AddRange(randomQuestion.WrongAnswers);
+                options.Add(currentQuestion.CorrectAnswer);
+                options.AddRange(currentQuestion.WrongAnswers);
 
                 // Shuffle the options
                 Random rnd = new Random();
                 options = options.OrderBy(x => rnd.Next()).ToList();
 
                 // Update UI with the shuffled options
-                questionTextBlock.Text = randomQuestion.QuestionText;
+                questionTextBlock.Text = currentQuestion.QuestionText;
 
                 // Check if we have at least four options
                 if (options.Count >= 4)
@@ -136,8 +137,95 @@ namespace UWP_Kviz
 
             return null; // Handle case when no new question is found
         }
+
+        // Method to get the current question
+        private Question GetCurrentQuestion()
+        {
+            return currentQuestion;
+        }
+
+        private void Provjeri_Click(object sender, RoutedEventArgs e)
+        {
+            // Get the selected answer
+            string selectedAnswer = GetSelectedAnswer();
+
+            // Check if an answer is selected
+            if (selectedAnswer != null)
+            {
+                // Check if the selected answer is correct
+                if (selectedAnswer == currentQuestion.CorrectAnswer)
+                {
+                    // If the answer is correct, generate a new question
+                    DisplayNewQuestion();
+                }
+                else
+                {
+                    // If the answer is wrong, display a message
+                    PogresniOdgovori.Text = "Pogrešan odgovor! Pokušaj ponovno!";
+                }
+            }
+            else
+            {
+                // If no answer is selected, display a message
+                PogresniOdgovori.Text = "Molimo izaberite odgovor.";
+            }
+        }
+
+        // Method to get the selected answer
+        private string GetSelectedAnswer()
+        {
+            if (optionRadioButton1.IsChecked == true)
+            {
+                return optionRadioButton1.Content as string;
+            }
+            else if (optionRadioButton2.IsChecked == true)
+            {
+                return optionRadioButton2.Content as string;
+            }
+            else if (optionRadioButton3.IsChecked == true)
+            {
+                return optionRadioButton3.Content as string;
+            }
+            else if (optionRadioButton4.IsChecked == true)
+            {
+                return optionRadioButton4.Content as string;
+            }
+            else
+            {
+                return null;
+            }
+        }
+
+        // Method to display a new question
+        private void DisplayNewQuestion()
+        {
+            // Clear the error message
+            ErrorText.Text = "";
+
+            // Fetch and display a new question
+            Question randomQuestion = GetRandomQuestion();
+            if (randomQuestion != null)
+            {
+                // Display the new question
+                questionTextBlock.Text = randomQuestion.QuestionText;
+
+                // Shuffle the options
+                List<string> options = new List<string>();
+                options.Add(randomQuestion.CorrectAnswer);
+                options.AddRange(randomQuestion.WrongAnswers);
+                Random rnd = new Random();
+                options = options.OrderBy(x => rnd.Next()).ToList();
+
+                // Update UI with the shuffled options
+                optionRadioButton1.Content = options[0];
+                optionRadioButton2.Content = options[1];
+                optionRadioButton3.Content = options[2];
+                optionRadioButton4.Content = options[3];
+            }
+        }
     }
 }
+
 
 
 
