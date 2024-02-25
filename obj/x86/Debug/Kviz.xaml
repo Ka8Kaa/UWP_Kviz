@@ -1,0 +1,26 @@
+﻿<Page
+    x:Class="UWP_Kviz.Kviz"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:UWP_Kviz"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+    <Grid>
+        <Button x:ConnectionId='2' x:Name="Započni" Content="ZAPOČNI!" Margin="854,89,0,0" VerticalAlignment="Top" Height="96" Width="198"                      />
+        <TextBlock x:ConnectionId='3' x:Name="questionTextBlock" HorizontalAlignment="Left" Margin="833,291,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="239" Height="32" Visibility="Collapsed"/>
+        <RadioButton x:ConnectionId='4' x:Name="optionRadioButton1" Content="" Margin="870,392,0,0" VerticalAlignment="Top" Width="204" Visibility="Collapsed"/>
+        <RadioButton x:ConnectionId='5' x:Name="optionRadioButton2" Content="" Margin="870,443,0,0" VerticalAlignment="Top" Width="201" Visibility="Collapsed"/>
+        <RadioButton x:ConnectionId='6' x:Name="optionRadioButton3" Content="" Margin="870,496,0,0" VerticalAlignment="Top" Width="201" Visibility="Collapsed"/>
+        <RadioButton x:ConnectionId='7' x:Name="optionRadioButton4" Content="" Margin="870,551,0,0" VerticalAlignment="Top" Width="201" Visibility="Collapsed"/>
+        <TextBlock x:ConnectionId='8' x:Name="ErrorText" HorizontalAlignment="Left" Margin="334,499,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" RenderTransformOrigin="0.5,0.5" Height="96" UseLayoutRounding="False" Width="170" d:LayoutRounding="Auto">
+            <TextBlock.RenderTransform>
+                <CompositeTransform Rotation="0.89"/>
+            </TextBlock.RenderTransform>
+        </TextBlock>
+
+    </Grid>
+</Page>
+
