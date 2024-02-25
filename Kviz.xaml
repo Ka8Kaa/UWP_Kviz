@@ -9,7 +9,17 @@
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
     <Grid>
-        <Button x:Name="Započni" Content="ZAPOČNI!" Margin="895,90,0,0" VerticalAlignment="Top" Height="96" Width="198"/>
+        <Button x:Name="Započni" Content="ZAPOČNI!" Margin="854,89,0,0" VerticalAlignment="Top" Height="96" Width="198" Click="Započni_Click"/>
+        <TextBlock x:Name="questionTextBlock" HorizontalAlignment="Left" Margin="833,291,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="239" Height="32" Visibility="Collapsed"/>
+        <RadioButton x:Name="optionRadioButton1" Content="" Margin="870,392,0,0" VerticalAlignment="Top" Width="204" Visibility="Collapsed"/>
+        <RadioButton x:Name="optionRadioButton2" Content="" Margin="870,443,0,0" VerticalAlignment="Top" Width="201" Visibility="Collapsed"/>
+        <RadioButton x:Name="optionRadioButton3" Content="" Margin="870,496,0,0" VerticalAlignment="Top" Width="201" Visibility="Collapsed"/>
+        <RadioButton x:Name="optionRadioButton4" Content="" Margin="870,551,0,0" VerticalAlignment="Top" Width="201" Visibility="Collapsed"/>
+        <TextBlock x:Name="ErrorText" HorizontalAlignment="Left" Margin="334,499,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" RenderTransformOrigin="0.5,0.5" Height="96" UseLayoutRounding="False" Width="170" d:LayoutRounding="Auto">
+            <TextBlock.RenderTransform>
+                <CompositeTransform Rotation="0.89"/>
+            </TextBlock.RenderTransform>
+        </TextBlock>
 
     </Grid>
 </Page>
