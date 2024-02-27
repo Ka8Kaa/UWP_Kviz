@@ -25,6 +25,7 @@ namespace UWP_Kviz
     /// </summary>
     public sealed partial class OsobniPodaci : Page
     {
+        private int playerCount = 0;
         public OsobniPodaci()
         {
             this.InitializeComponent();
@@ -135,7 +136,19 @@ namespace UWP_Kviz
                             command.ExecuteNonQuery();
                         }
                     }
-                    Frame.Navigate(typeof(Kviz));
+                    playerCount++;
+                    if(playerCount==1)
+                    {
+                        BrojIgraca.Text = "Drugi igrač:";
+                    }
+                    OIBunos.Text = "";
+                    Imeunos.Text = "";
+                    Prezimeunos.Text = "";
+                    ErrorTextbox.Text = "";
+                    if (playerCount == 2)
+                    {
+                        Frame.Navigate(typeof(Kviz));
+                    }
                 }
                 catch (Exception ex)
                 {

@@ -26,5 +26,6 @@
         <TextBox x:Name="Prezimeunos" HorizontalAlignment="Left" Margin="794,614,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="154"/>
         <TextBlock x:Name="ErrorTextbox" HorizontalAlignment="Left" Margin="802,896,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Height="41" Width="142"/>
         <TextBlock HorizontalAlignment="Left" Margin="730,74,0,0" TextWrapping="Wrap" Text="PRIJE KVIZA... Molimo unesite Vaše podatke:" VerticalAlignment="Top" Height="70" Width="277"/>
+        <TextBlock x:Name="BrojIgraca" HorizontalAlignment="Left" Margin="819,213,0,0" TextWrapping="Wrap" Text="Prvi igrač:" VerticalAlignment="Top" Width="232" Height="35"/>
     </Grid>
 </Page>

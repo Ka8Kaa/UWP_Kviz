@@ -18,7 +18,7 @@
                 <MenuFlyoutItem Text="About" Click="MenuFlyoutItem_Click_1"/>
             </MenuBarItem>
         </MenuBar>
-        <TextBlock x:Name="Pocetni" HorizontalAlignment="Left" Margin="879,485,0,0" TextWrapping="Wrap" Text="PROJEKTNI ZADATAK-Tko ne želi biti miljunaš" VerticalAlignment="Top" Height="132" Width="207"/>
+        <TextBlock x:Name="Pocetni" HorizontalAlignment="Left" Margin="847,438,0,0" TextWrapping="Wrap" Text="PROJEKTNI ZADATAK" VerticalAlignment="Top" Height="44" Width="207"/>
 
 
     </Grid>

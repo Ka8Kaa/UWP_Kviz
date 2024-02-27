@@ -17,11 +17,11 @@
                 <MenuFlyoutItem Text="MainPage" Click="MenuFlyoutItem_Click_1"/>
             </MenuBarItem>
         </MenuBar>
-        <TextBlock HorizontalAlignment="Left" Margin="626,427,0,0" TextWrapping="Wrap" Text="Karlo Bilanović" VerticalAlignment="Top" Height="37" Width="176"/>
-        <TextBlock HorizontalAlignment="Left" Margin="629,491,0,0" TextWrapping="Wrap" Text="Matej Ćaćić" VerticalAlignment="Top" Width="175" Height="49"/>
-        <TextBlock HorizontalAlignment="Left" Margin="651,553,0,0" TextWrapping="Wrap" Text="3.G" VerticalAlignment="Top" Width="124" Height="38"/>
-        <TextBlock HorizontalAlignment="Left" Margin="391,188,0,0" TextWrapping="Wrap" Text="10 pitanja. 4 ponuđena odgovora. 150€ po pitanju. Tko može odgovoriti na sve i odnesti doma 1500€? " VerticalAlignment="Top" Height="43"/>
-        <TextBlock HorizontalAlignment="Left" Margin="641,356,0,0" TextWrapping="Wrap" Text="Napravili:" VerticalAlignment="Top" Width="156"/>
+        <TextBlock HorizontalAlignment="Left" Margin="876,359,0,0" TextWrapping="Wrap" Text="Karlo Bilanović" VerticalAlignment="Top" Height="37" Width="176"/>
+        <TextBlock HorizontalAlignment="Left" Margin="887,407,0,0" TextWrapping="Wrap" Text="Matej Ćaćić" VerticalAlignment="Top" Width="175" Height="49"/>
+        <TextBlock HorizontalAlignment="Left" Margin="909,463,0,0" TextWrapping="Wrap" Text="3.G" VerticalAlignment="Top" Width="124" Height="38"/>
+        <TextBlock HorizontalAlignment="Left" Margin="511,178,0,0" TextWrapping="Wrap" Text="2 igrača. Svaki igrač ima 60 sekundi. Naizmjenično odgovaranje. Tko prvi ostane bez vremena gubi. Tko može brže i bolje odgovarati na pitanja i odnijeti pobjedu? " VerticalAlignment="Top" Height="43"/>
+        <TextBlock HorizontalAlignment="Left" Margin="895,302,0,0" TextWrapping="Wrap" Text="Napravili:" VerticalAlignment="Top" Width="156"/>
 
     </Grid>
 </Page>

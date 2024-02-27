@@ -15,7 +15,7 @@
         <RadioButton x:Name="optionRadioButton2" Content="" Margin="870,443,0,0" VerticalAlignment="Top" Width="201" Visibility="Collapsed"/>
         <RadioButton x:Name="optionRadioButton3" Content="" Margin="870,496,0,0" VerticalAlignment="Top" Width="201" Visibility="Collapsed"/>
         <RadioButton x:Name="optionRadioButton4" Content="" Margin="870,551,0,0" VerticalAlignment="Top" Width="201" Visibility="Collapsed"/>
-        <TextBlock x:Name="ErrorText" HorizontalAlignment="Left" Margin="245,896,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" RenderTransformOrigin="0.5,0.5" Height="35" UseLayoutRounding="False" Width="127" d:LayoutRounding="Auto">
+        <TextBlock x:Name="ErrorText" HorizontalAlignment="Left" Margin="245,896,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" RenderTransformOrigin="0.5,0.5" Height="35" UseLayoutRounding="False" Width="127" d:LayoutRounding="Auto" Visibility="Collapsed">
             <TextBlock.RenderTransform>
                 <CompositeTransform Rotation="0.89"/>
             </TextBlock.RenderTransform>

@@ -27,6 +27,7 @@ namespace UWP_Kviz
         private DispatcherTimer player2Timer;
         private int player1TimerDuration = 60; // Duration of player 1's timer in seconds
         private int player2TimerDuration = 60; // Duration of player 2's timer in seconds
+        private bool gameStarted = false;
 
 
         public Kviz()
@@ -84,11 +85,11 @@ namespace UWP_Kviz
         }
         private void Player1Timer_Tick(object sender, object e)
         {
-            player1TimerDuration--;
             if (player1TimerDuration > 0)
             {
                 // Update the UI with the remaining time for Player 1
                 PrviIgracVrijeme.Text = player1TimerDuration.ToString() + "s";
+                player1TimerDuration--;
             }
             else
             {
@@ -101,11 +102,13 @@ namespace UWP_Kviz
         }
         private void Player2Timer_Tick(object sender, object e)
         {
-            player2TimerDuration--;
+            
             if (player2TimerDuration > 0)
             {
                 // Update the UI with the remaining time for Player 2
+                player2TimerDuration--;
                 DrugiIgracVrijeme.Text = player2TimerDuration.ToString() + "s";
+             
             }
             else
             {
@@ -118,6 +121,14 @@ namespace UWP_Kviz
         }
         private void Započni_Click(object sender, RoutedEventArgs e)
         {
+            if (gameStarted)
+            {
+                // If the game has started, do nothing and return
+                return;
+            }
+
+            // Set the game as started
+            gameStarted = true;
             StopPlayer1Timer();
             StopPlayer2Timer();
             ResetPlayer1Timer();
@@ -254,6 +265,11 @@ namespace UWP_Kviz
 
         private void Provjeri_Click(object sender, RoutedEventArgs e)
         {
+            ErrorText.Text=player1TimerDuration.ToString();
+            if (player1TimerDuration == 0 || player2TimerDuration == 0)
+            {
+                return;
+            }
             // Get the selected answer
             string selectedAnswer = GetSelectedAnswer();
             // Check if an answer is selected
