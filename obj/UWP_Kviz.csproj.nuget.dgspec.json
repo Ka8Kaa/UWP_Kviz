@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "D:\\Skola\\Niop 3g\\UWP_Kviz\\UWP_Kviz\\UWP_Kviz.csproj": {}
+    "C:\\Users\\matej\\OneDrive\\Radna površina\\UWP_Kviz\\UWP_Kviz.csproj": {}
   },
   "projects": {
-    "D:\\Skola\\Niop 3g\\UWP_Kviz\\UWP_Kviz\\UWP_Kviz.csproj": {
+    "C:\\Users\\matej\\OneDrive\\Radna površina\\UWP_Kviz\\UWP_Kviz.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Skola\\Niop 3g\\UWP_Kviz\\UWP_Kviz\\UWP_Kviz.csproj",
+        "projectUniqueName": "C:\\Users\\matej\\OneDrive\\Radna površina\\UWP_Kviz\\UWP_Kviz.csproj",
         "projectName": "UWP_Kviz",
-        "projectPath": "D:\\Skola\\Niop 3g\\UWP_Kviz\\UWP_Kviz\\UWP_Kviz.csproj",
-        "packagesPath": "C:\\Users\\Karlo\\.nuget\\packages\\",
-        "outputPath": "D:\\Skola\\Niop 3g\\UWP_Kviz\\UWP_Kviz\\obj\\",
+        "projectPath": "C:\\Users\\matej\\OneDrive\\Radna površina\\UWP_Kviz\\UWP_Kviz.csproj",
+        "packagesPath": "C:\\Users\\matej\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\matej\\OneDrive\\Radna površina\\UWP_Kviz\\obj\\",
         "projectStyle": "PackageReference",
         "skipContentFileWrite": true,
         "fallbackFolders": [
@@ -19,7 +19,7 @@
           "C:\\Program Files (x86)\\Microsoft SDKs\\UWPNuGetPackages\\"
         ],
         "configFilePaths": [
-          "C:\\Users\\Karlo\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\matej\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -42,6 +42,10 @@
             "Microsoft.NETCore.UniversalWindowsPlatform": {
               "target": "Package",
               "version": "[6.2.14, )"
+            },
+            "Npgsql": {
+              "target": "Package",
+              "version": "[8.0.2, )"
             },
             "System.Data.SQLite": {
               "target": "Package",

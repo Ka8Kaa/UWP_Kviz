@@ -1,43 +1,56 @@
-﻿using System.Data.SQLite;
+﻿using System;
+using System.Data.SQLite;
 using System.IO;
+
+using Npgsql;
 
 public static class DatabaseHelper
 {
-    private static string connectionString= @"DataSource=D:\Skola\Niop 3g\UWP_Kviz\UWP_Kviz\Databaza.db;Version=3";
+    private static string connectionString = "Host=gejtejz-13872.8nj.gcp-europe-west1.cockroachlabs.cloud;Port=26257;Database=blitzbtl;Username=Mcacic;Password=NJhhoQj-IcRgyf1ffY60nQ;SSL Mode=Require;Trust Server Certificate=true";
+
     public static void InitializeDatabase()
     {
-        if(!File.Exists(@"D:\Skola\Niop 3g\UWP_Kviz\UWP_Kviz\Databaza.db"))
+        try
         {
-            SQLiteConnection.CreateFile(@"D:\Skola\Niop 3g\UWP_Kviz\UWP_Kviz\Databaza.db");
-            using (var connection=new SQLiteConnection(connectionString))
+            using (NpgsqlConnection connection = new NpgsqlConnection(connectionString))
             {
                 connection.Open();
-                string createPitanjaTableQuery = @"
-                    CREATE TABLE IF NOT EXISTS Pitanja(
-                    ID INTEGER PRIMARY KEY AUTOINCREMENT,
-                    QuestionText TEXT NOT NULL,
-                    CorrectAnswer TEXT NOT NULL,
-                    WrongAnswer1 TEXT NOT NULL,
-                    WrongAnswer2 TEXT NOT NULL,
-                    WrongAnswer3 TEXT NOT NULL
-                  );";
-                string createOsobniPodaciTableQuery = @"
-                   CREATE TABLE IF NOT EXISTS OsobniPodaci(
-                    ID_Unos  INTEGER PRIMARY KEY AUTOINCREMENT,
-                    OIB BIGINT NOT NULL,
-	                Ime TEXT NOT NULL,
-	                Prezime TEXT NOT NULL
-                  );";
 
-                using (var command=new SQLiteCommand(connection))
+                // Provjerite postoji li tablica Pitanja, ako ne, stvorite ju
+                using (NpgsqlCommand command = new NpgsqlCommand())
                 {
-                    command.CommandText= createPitanjaTableQuery;
+                    command.Connection = connection;
+                    command.CommandText = @"
+                        CREATE TABLE IF NOT EXISTS Pitanja(
+                            ID SERIAL PRIMARY KEY,
+                            QuestionText TEXT NOT NULL,
+                            CorrectAnswer TEXT NOT NULL,
+                            WrongAnswer1 TEXT NOT NULL,
+                            WrongAnswer2 TEXT NOT NULL,
+                            WrongAnswer3 TEXT NOT NULL
+                        );";
                     command.ExecuteNonQuery();
+                }
 
-                    command.CommandText= createOsobniPodaciTableQuery;
+                // Provjerite postoji li tablica OsobniPodaci, ako ne, stvorite ju
+                using (NpgsqlCommand command = new NpgsqlCommand())
+                {
+                    command.Connection = connection;
+                    command.CommandText = @"
+                        CREATE TABLE IF NOT EXISTS OsobniPodaci(
+                            ID_Unos SERIAL PRIMARY KEY,
+                            OIB BIGINT NOT NULL,
+                            Ime TEXT NOT NULL,
+                            Prezime TEXT NOT NULL
+                        );";
                     command.ExecuteNonQuery();
                 }
             }
         }
+        catch (Exception ex)
+        {
+            // Obrada grešaka
+        }
     }
 }
+

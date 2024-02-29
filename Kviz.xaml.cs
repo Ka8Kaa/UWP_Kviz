@@ -4,6 +4,8 @@ using System.Data.SQLite;
 using System.Linq;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
+using Npgsql;
+
 
 namespace UWP_Kviz
 {
@@ -189,21 +191,21 @@ namespace UWP_Kviz
         // Method to fetch a random question from SQLite database
         private Question GetRandomQuestion()
         {
-            string connectionString = @"Data Source=D:\Skola\Niop 3g\UWP_Kviz\UWP_Kviz\Databaza.db;Version=3";
+            string connectionString = "Host=gejtejz-13872.8nj.gcp-europe-west1.cockroachlabs.cloud;Port=26257;Database=blitzbtl;Username=Mcacic;Password=NJhhoQj-IcRgyf1ffY60nQ;SSL Mode=Require;Trust Server Certificate=true";
 
             try
             {
-                using (SQLiteConnection connection = new SQLiteConnection(connectionString))
+                using (NpgsqlConnection connection = new NpgsqlConnection(connectionString))
                 {
                     connection.Open();
 
                     // Fetch all questions
-                    string query = "SELECT * FROM Pitanja";
+                    string query = "SELECT * FROM pitanja";
                     List<Question> allQuestions = new List<Question>();
 
-                    using (SQLiteCommand command = new SQLiteCommand(query, connection))
+                    using (NpgsqlCommand command = new NpgsqlCommand(query, connection))
                     {
-                        using (SQLiteDataReader reader = command.ExecuteReader())
+                        using (NpgsqlDataReader reader = command.ExecuteReader())
                         {
                             while (reader.Read())
                             {
@@ -256,6 +258,7 @@ namespace UWP_Kviz
 
             return null;
         }
+
 
         // Method to get the current question
         private Question GetCurrentQuestion()
