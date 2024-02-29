@@ -5,20 +5,21 @@
     xmlns:local="using:UWP_Kviz"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    mc:Ignorable="d"
-    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+    mc:Ignorable="d">
+    <Page.Background>
+        <ImageBrush/>
+    </Page.Background>
+
 
     <Grid>
-        <MenuBar HorizontalAlignment="Left" Margin="0, 0, 0, 960">
-            <MenuBarItem Title="File">
-                <MenuFlyoutItem Text="Kviz" Click="MenuFlyoutItem_Click_2"/>
-                <MenuFlyoutItem Text="Exit" Click="MenuFlyoutItem_Click"/>
-            </MenuBarItem>
-            <MenuBarItem Title="Help">
-                <MenuFlyoutItem Text="About" Click="MenuFlyoutItem_Click_1"/>
-            </MenuBarItem>
-        </MenuBar>
-        <TextBlock x:Name="Pocetni" HorizontalAlignment="Left" Margin="847,438,0,0" TextWrapping="Wrap" Text="PROJEKTNI ZADATAK" VerticalAlignment="Top" Height="44" Width="207"/>
+        <Grid.Background>
+            <ImageBrush ImageSource="/Assets/pozadina.png"/>
+        </Grid.Background>
+
+        <TextBlock x:Name="Pocetni" HorizontalAlignment="Left" VerticalAlignment="Top" TextWrapping="Wrap" Text="Blitz Battle" Height="82" Width="372" Margin="783,224,0,0" FontSize="65" FontFamily="Verdana"/>
+        <Button Content="PLAY" Margin="0,404,0,0" VerticalAlignment="Top" HorizontalAlignment="Center" Height="86" Width="262" FontSize="50" FontFamily="Verdana" Click="Button_Click"/>
+        <Button Content="ABOUT" Margin="0,540,0,0" VerticalAlignment="Top" Height="74" Width="216" FontSize="40" FontFamily="Verdana" HorizontalAlignment="Center" Click="Button_Click_1"/>
+        <Button Content="EXIT" Margin="0,668,0,0" VerticalAlignment="Top" HorizontalAlignment="Center" Height="72" Width="214" FontSize="40" FontFamily="Verdana" Click="Button_Click_2"/>
 
 
     </Grid>

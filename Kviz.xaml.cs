@@ -104,13 +104,13 @@ namespace UWP_Kviz
         }
         private void Player2Timer_Tick(object sender, object e)
         {
-            
+
             if (player2TimerDuration > 0)
             {
                 // Update the UI with the remaining time for Player 2
                 player2TimerDuration--;
                 DrugiIgracVrijeme.Text = player2TimerDuration.ToString() + "s";
-             
+
             }
             else
             {
@@ -268,7 +268,7 @@ namespace UWP_Kviz
 
         private void Provjeri_Click(object sender, RoutedEventArgs e)
         {
-            ErrorText.Text=player1TimerDuration.ToString();
+            ErrorText.Text = player1TimerDuration.ToString();
             if (player1TimerDuration == 0 || player2TimerDuration == 0)
             {
                 return;
@@ -374,78 +374,80 @@ namespace UWP_Kviz
                 optionRadioButton4.Content = options[3];
             }
         }
-        private void FetchLastTwoRows()
+        
+
+
+// Definicija funkcije FetchLastTwoRows
+private void FetchLastTwoRows()
+    {
+        // Postavite svoje vlastite podatke za povezivanje s CockroachDB bazom podataka
+        string connectionString = "Host=gejtejz-13872.8nj.gcp-europe-west1.cockroachlabs.cloud;Port=26257;Database=blitzbtl;Username=Mcacic;Password=NJhhoQj-IcRgyf1ffY60nQ;SSL Mode=Require;Trust Server Certificate=true";
+
+        try
         {
-            string connectionString = @"Data Source=D:\Skola\Niop 3g\UWP_Kviz\UWP_Kviz\Databaza.db;Version=3";
-
-            try
+            // Stvaranje veze s bazom podataka
+            using (NpgsqlConnection connection = new NpgsqlConnection(connectionString))
             {
-                using (SQLiteConnection connection = new SQLiteConnection(connectionString))
+                // Otvaranje veze
+                connection.Open();
+
+                // SQL upit za dohvaćanje posljednja dva reda iz tablice OsobniPodaci
+                string query = "SELECT * FROM OsobniPodaci ORDER BY ID_Unos DESC LIMIT 2";
+
+                // Stvaranje naredbe koja sadrži SQL upit i povezivanje s već otvorenom vezom
+                using (NpgsqlCommand command = new NpgsqlCommand(query, connection))
                 {
-                    connection.Open();
-
-                    // SQLite query to fetch the last two rows from the table
-                    string query = "SELECT * FROM OsobniPodaci ORDER BY ID_Unos DESC LIMIT 2";
-
-                    using (SQLiteCommand command = new SQLiteCommand(query, connection))
+                    // Izvršavanje upita i dohvaćanje rezultata
+                    using (NpgsqlDataReader reader = command.ExecuteReader())
                     {
-                        using (SQLiteDataReader reader = command.ExecuteReader())
+                        // Provjera da li postoje redovi u rezultatu
+                        if (reader.HasRows)
                         {
-                            // Ensure there are rows returned
-                            if (reader.HasRows)
-                            {
-                                // Counter to keep track of which row we are on
-                                int rowCounter = 0;
+                            // Brojač redova
+                            int rowCounter = 0;
 
-                                while (reader.Read())
+                            // Iteriranje kroz rezultat
+                            while (reader.Read())
+                            {
+                                // Dohvaćanje vrijednosti iz svakog stupca u trenutnom retku
+                                int ID_Unos = reader.GetInt32(0);
+                                long OIB = reader.GetInt64(1);
+                                string ime = reader.GetString(2);
+                                string prezime = reader.GetString(3);
+
+                                // Ažuriranje tekstualnih blokova s podacima iz baze
+                                if (rowCounter == 0)
                                 {
-                                    // Retrieve values from each column
-                                    int ID_Unos = reader.GetInt32(0);
-                                    long OIB = reader.GetInt64(1);
-                                    string ime = reader.GetString(2);
-                                    string prezime = reader.GetString(3);
-
-                                    // Assuming you have text blocks named accordingly: 
-                                    // idTextBlock1, questionTextBlock1, answerTextBlock1 for the second to last row
-                                    // idTextBlock2, questionTextBlock2, answerTextBlock2 for the last row
-
-                                    // Update text blocks with data from the current row
-                                    if (rowCounter == 0)
-                                    {
-                                        DrugiIgracOIB.Text = $"{OIB}";
-                                        DrugiIgracIme.Text = $"{ime}";
-                                        DrugiIgracPrezime.Text = $"{prezime}";
-                                    }
-                                    else if (rowCounter == 1)
-                                    {
-                                        PrviIgracOIB.Text = $"{OIB}";
-                                        PrviIgracIme.Text = $"{ime}";
-                                        PrviIgracPrezime.Text = $"{prezime}";
-                                    }
-
-                                    // Increment the row counter
-                                    rowCounter++;
+                                    DrugiIgracOIB.Text = $"{OIB}";
+                                    DrugiIgracIme.Text = $"{ime}";
+                                    DrugiIgracPrezime.Text = $"{prezime}";
                                 }
+                                else if (rowCounter == 1)
+                                {
+                                    PrviIgracOIB.Text = $"{OIB}";
+                                    PrviIgracIme.Text = $"{ime}";
+                                    PrviIgracPrezime.Text = $"{prezime}";
+                                }
+
+                                // Inkrementiranje brojača redova
+                                rowCounter++;
                             }
-                            else
-                            {
-                                // Handle case when no rows are returned
-                                ErrorText.Text = "No rows returned by the query.";
-                            }
+                        }
+                        else
+                        {
+                            // Nema redova u rezultatu
+                            ErrorText.Text = "No rows returned by the query.";
                         }
                     }
                 }
             }
-            catch (Exception ex)
-            {
-                // Handle any exceptions (e.g., database connection error)
-                ErrorText.Text = "An error occurred: " + ex.Message;
-            }
+        }
+        catch (Exception ex)
+        {
+            // Uhvatiti i prikazati bilo kakvu grešku koja se dogodi pri radu s bazom podataka
+            ErrorText.Text = "An error occurred: " + ex.Message;
         }
     }
+
 }
-
-
-
-
-
+}

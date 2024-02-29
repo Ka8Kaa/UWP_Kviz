@@ -27,18 +27,20 @@ namespace UWP_Kviz
             this.InitializeComponent();
             DatabaseHelper.InitializeDatabase();
         }
-        private void MenuFlyoutItem_Click(object sender, RoutedEventArgs e)
-        {
-            Application.Current.Exit();
-        }
-        private void MenuFlyoutItem_Click_1(object sender, RoutedEventArgs e)
-        {
-            Frame.Navigate(typeof(About));
-        }
-        private void MenuFlyoutItem_Click_2(object sender, RoutedEventArgs e)
+
+        private void Button_Click(object sender, RoutedEventArgs e)
         {
             Frame.Navigate(typeof(OsobniPodaci));
         }
 
+        private void Button_Click_1(object sender, RoutedEventArgs e)
+        {
+            Frame.Navigate(typeof(About));
+        }
+
+        private void Button_Click_2(object sender, RoutedEventArgs e)
+        {
+            Application.Current.Exit();
+        }
     }
 }

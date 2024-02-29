@@ -140,6 +140,9 @@
     </AppxManifest>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Assets\pozadina.png" />
+    <Content Include="Assets\Square44x44Logo.scale-400.png" />
+    <Content Include="Assets\Square44x44Logo.targetsize-24.png" />
     <Content Include="OsobniPodaci.sql" />
     <Content Include="Pitanja.sql" />
     <Content Include="Properties\Default.rd.xml" />

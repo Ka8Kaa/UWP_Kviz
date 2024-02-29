@@ -3,6 +3,7 @@ using System.Data;
 using Npgsql;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
+using Windows.UI.Xaml.Media;
 
 namespace UWP_Kviz
 {
@@ -84,6 +85,7 @@ namespace UWP_Kviz
                 if (playerCount == 1)
                 {
                     BrojIgraca.Text = "Drugi igrač:";
+                    
                 }
 
                 OIBunos.Text = "";
