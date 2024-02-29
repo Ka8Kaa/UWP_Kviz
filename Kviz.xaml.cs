@@ -308,6 +308,7 @@ namespace UWP_Kviz
                 {
                     // If the answer is wrong, display a message
                     PogresniOdgovori.Text = "Pogrešan odgovor! Pokušaj ponovno!";
+                    DisplayNewQuestion();
                 }
             }
             else
