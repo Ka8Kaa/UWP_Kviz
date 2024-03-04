@@ -5,21 +5,14 @@
     xmlns:local="using:UWP_Kviz"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    mc:Ignorable="d">
-    <Page.Background>
-        <ImageBrush/>
-    </Page.Background>
-
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
     <Grid>
-        <Grid.Background>
-            <ImageBrush ImageSource="/Assets/pozadina.png"/>
-        </Grid.Background>
-
-        <TextBlock x:Name="Pocetni" HorizontalAlignment="Left" VerticalAlignment="Top" TextWrapping="Wrap" Text="Blitz Battle" Height="82" Width="372" Margin="783,224,0,0" FontSize="65" FontFamily="Verdana"/>
-        <Button Content="PLAY" Margin="0,404,0,0" VerticalAlignment="Top" HorizontalAlignment="Center" Height="86" Width="262" FontSize="50" FontFamily="Verdana" Click="Button_Click"/>
-        <Button Content="ABOUT" Margin="0,540,0,0" VerticalAlignment="Top" Height="74" Width="216" FontSize="40" FontFamily="Verdana" HorizontalAlignment="Center" Click="Button_Click_1"/>
-        <Button Content="EXIT" Margin="0,668,0,0" VerticalAlignment="Top" HorizontalAlignment="Center" Height="72" Width="214" FontSize="40" FontFamily="Verdana" Click="Button_Click_2"/>
+        <TextBlock HorizontalAlignment="Left" Margin="898,278,0,0" TextWrapping="Wrap" Text="Blitz Battle" VerticalAlignment="Top" Height="61" Width="196"/>
+        <Button x:Name="KVIZ" Content="KVIZ" Margin="866,352,0,0" VerticalAlignment="Top" Width="136" Height="42" Click="KVIZ_Click"/>
+        <Button x:Name="ABOUT" Content="ABOUT" Margin="890,426,0,0" VerticalAlignment="Top" Width="92" Click="ABOUT_Click_1"/>
+        <Button x:Name="EXIT" Content="EXIT" Margin="896,496,0,0" VerticalAlignment="Top" Width="78"/>
 
 
     </Grid>

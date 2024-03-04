@@ -9,19 +9,23 @@
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
     <Grid>
-        <Grid.Background>
-            <ImageBrush ImageSource="/Assets/pozadina.png"/>
-        </Grid.Background>
-
-        <Button x:Name="Zaigraj" Content="ZAIGRAJ!" Margin="863,717,0,0" VerticalAlignment="Top" Height="102" Width="198" Click="Zaigraj_Click" FontSize="35" FontFamily="Verdana"/>
-        <TextBlock x:Name="OIB" HorizontalAlignment="Left" Margin="924,341,0,0" TextWrapping="Wrap" Text="OIB:" VerticalAlignment="Top" Height="35" Width="83" FontSize="30" FontFamily="Verdana" RenderTransformOrigin="0.53,0.657"/>
-        <TextBox x:Name="OIBunos" HorizontalAlignment="Center" Margin="0,382,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="282" FontSize="30" FontFamily="Verdana"/>
-        <TextBlock x:Name="Ime" HorizontalAlignment="Left" Margin="927,464,0,0" TextWrapping="Wrap" Text="IME:" VerticalAlignment="Top" Height="33" Width="86" FontSize="30" FontFamily="Verdana"/>
-        <TextBox x:Name="Imeunos" HorizontalAlignment="Center" Margin="0,505,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="282" FontSize="30" FontFamily="Verdana"/>
-        <TextBlock x:Name="Prezime" HorizontalAlignment="Left" Margin="885,575,0,0" TextWrapping="Wrap" Text="PREZIME:" VerticalAlignment="Top" Height="31" Width="158" FontSize="30" FontFamily="Verdana"/>
-        <TextBox x:Name="Prezimeunos" HorizontalAlignment="Center" Margin="0,616,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="282" FontSize="30" FontFamily="Verdana" Height="49"/>
-        <TextBlock x:Name="ErrorTextbox" HorizontalAlignment="Left" Margin="738,862,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Height="129" Width="448" FontSize="30" FontFamily="Verdana"/>
-        <TextBlock HorizontalAlignment="Left" Margin="617,80,0,0" TextWrapping="Wrap" Text="PRIJE KVIZA... Molimo unesite Vaše podatke:" VerticalAlignment="Top" Height="70" Width="697" FontSize="30" FontFamily="Verdana"/>
-        <TextBlock x:Name="BrojIgraca" HorizontalAlignment="Left" Margin="883,205,0,0" TextWrapping="Wrap" Text="Prvi igrač:" VerticalAlignment="Top" Width="183" Height="75" FontSize="30" FontFamily="Verdana"/>
+        <MenuBar HorizontalAlignment="Left" Margin="0, 0, 0, 960">
+            <MenuBarItem Title="File">
+                <MenuFlyoutItem Text="Exit" Click="MenuFlyoutItem_Click"/>
+            </MenuBarItem>
+            <MenuBarItem Title="Help">
+                <MenuFlyoutItem Text="MainPage" Click="MenuFlyoutItem_Click_1"/>
+            </MenuBarItem>
+        </MenuBar>
+        <Button x:Name="Zaigraj" Content="ZAIGRAJ!" Margin="787,735,0,0" VerticalAlignment="Top" Height="74" Width="164" Click="Zaigraj_Click"/>
+        <TextBlock x:Name="OIB" HorizontalAlignment="Left" Margin="572,447,0,0" TextWrapping="Wrap" Text="OIB:" VerticalAlignment="Top" Height="35" Width="95"/>
+        <TextBox x:Name="OIBunos" HorizontalAlignment="Left" Margin="795,446,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="155"/>
+        <TextBlock x:Name="Ime" HorizontalAlignment="Left" Margin="573,528,0,0" TextWrapping="Wrap" Text="IME:" VerticalAlignment="Top" Height="33" Width="102"/>
+        <TextBox x:Name="Imeunos" HorizontalAlignment="Left" Margin="796,528,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="152"/>
+        <TextBlock x:Name="Prezime" HorizontalAlignment="Left" Margin="563,616,0,0" TextWrapping="Wrap" Text="PREZIME:" VerticalAlignment="Top" Height="31" Width="94"/>
+        <TextBox x:Name="Prezimeunos" HorizontalAlignment="Left" Margin="794,614,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="154"/>
+        <TextBlock x:Name="ErrorTextbox" HorizontalAlignment="Left" Margin="802,896,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Height="41" Width="142"/>
+        <TextBlock HorizontalAlignment="Left" Margin="730,74,0,0" TextWrapping="Wrap" Text="PRIJE KVIZA... Molimo unesite Vaše podatke:" VerticalAlignment="Top" Height="70" Width="277"/>
+        <TextBlock x:Name="BrojIgraca" HorizontalAlignment="Left" Margin="819,213,0,0" TextWrapping="Wrap" Text="Prvi igrač:" VerticalAlignment="Top" Width="232" Height="35"/>
     </Grid>
 </Page>

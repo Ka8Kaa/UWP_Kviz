@@ -27,20 +27,19 @@ namespace UWP_Kviz
             this.InitializeComponent();
             DatabaseHelper.InitializeDatabase();
         }
-
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private void KVIZ_Click(object sender, RoutedEventArgs e)
         {
             Frame.Navigate(typeof(OsobniPodaci));
         }
-
-        private void Button_Click_1(object sender, RoutedEventArgs e)
-        {
-            Frame.Navigate(typeof(About));
-        }
-
-        private void Button_Click_2(object sender, RoutedEventArgs e)
+ 
+        private void EXIT_Click(object sender, RoutedEventArgs e)
         {
             Application.Current.Exit();
+        }
+
+        private void ABOUT_Click_1(object sender, RoutedEventArgs e)
+        {
+            Frame.Navigate(typeof(About));
         }
     }
 }
