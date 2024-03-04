@@ -1,7 +1,10 @@
-﻿using System;
+﻿using Npgsql;
+using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Data.SQLite;
 using System.Linq;
+using UWP_Kviz;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 
@@ -35,7 +38,27 @@ namespace UWP_Kviz
             this.InitializeComponent();
             FetchLastTwoRows();
             InitializeTimers();
+            InitializeCheckBoxes();
 
+
+        }
+        private void InitializeCheckBoxes()
+        {
+            optionRadioButton1.Checked += CheckBox_Checked;
+            optionRadioButton2.Checked += CheckBox_Checked;
+            optionRadioButton3.Checked += CheckBox_Checked;
+            optionRadioButton4.Checked += CheckBox_Checked;
+        }
+        private void CheckBox_Checked(object sender, RoutedEventArgs e)
+        {
+            // Uncheck other checkboxes when one is checked
+            foreach (var checkBox in new CheckBox[] { optionRadioButton1, optionRadioButton2, optionRadioButton3, optionRadioButton4 })
+            {
+                if (checkBox != sender && checkBox.IsChecked == true)
+                {
+                    checkBox.IsChecked = false;
+                }
+            }
         }
         private void InitializeTimers()
         {
@@ -102,13 +125,13 @@ namespace UWP_Kviz
         }
         private void Player2Timer_Tick(object sender, object e)
         {
-            
+
             if (player2TimerDuration > 0)
             {
                 // Update the UI with the remaining time for Player 2
                 player2TimerDuration--;
                 DrugiIgracVrijeme.Text = player2TimerDuration.ToString() + "s";
-             
+
             }
             else
             {
@@ -121,6 +144,7 @@ namespace UWP_Kviz
         }
         private void Započni_Click(object sender, RoutedEventArgs e)
         {
+            Započni.Visibility = Visibility.Collapsed;
             if (gameStarted)
             {
                 // If the game has started, do nothing and return
@@ -189,72 +213,46 @@ namespace UWP_Kviz
         // Method to fetch a random question from SQLite database
         private Question GetRandomQuestion()
         {
-            string connectionString = @"Data Source=D:\Skola\Niop 3g\UWP_Kviz\UWP_Kviz\Databaza.db;Version=3";
+            Question question = null;
+            string connectionString = "Host=gejtejz-13872.8nj.gcp-europe-west1.cockroachlabs.cloud;Port=26257;Database=blitzbtl;Username=Mcacic;Password=NJhhoQj-IcRgyf1ffY60nQ;SSL Mode=Require;Trust Server Certificate=true";
 
             try
             {
-                using (SQLiteConnection connection = new SQLiteConnection(connectionString))
+                using (NpgsqlConnection connection = new NpgsqlConnection(connectionString))
                 {
                     connection.Open();
 
-                    // Fetch all questions
-                    string query = "SELECT * FROM Pitanja";
-                    List<Question> allQuestions = new List<Question>();
+                    string query = "SELECT * FROM pitanja ORDER BY RANDOM() LIMIT 1";
 
-                    using (SQLiteCommand command = new SQLiteCommand(query, connection))
+                    using (NpgsqlCommand command = new NpgsqlCommand(query, connection))
                     {
-                        using (SQLiteDataReader reader = command.ExecuteReader())
+                        using (NpgsqlDataReader reader = command.ExecuteReader())
                         {
-                            while (reader.Read())
+                            if (reader.Read())
                             {
-                                Question question = new Question
+                                question = new Question
                                 {
-                                    Id = reader.GetInt32(0),
-                                    QuestionText = reader.GetString(1),
-                                    CorrectAnswer = reader.GetString(2),
+                                    Id = Convert.ToInt32(reader["id_pitanja"]),
+                                    QuestionText = reader["textpitanja"].ToString(),
+                                    CorrectAnswer = reader["correctanswer"].ToString(),
                                     WrongAnswers = new string[]
                                     {
-                                reader.GetString(3),
-                                reader.GetString(4),
-                                reader.GetString(5)
+                                reader["wronganswer1"].ToString(),
+                                reader["wronganswer2"].ToString(),
+                                reader["wronganswer3"].ToString()
                                     }
                                 };
-                                allQuestions.Add(question);
                             }
                         }
-                    }
-
-                    // Shuffle questions
-                    Random rnd = new Random();
-                    allQuestions = allQuestions.OrderBy(x => rnd.Next()).ToList();
-
-                    // Ensure there are questions available
-                    if (allQuestions.Count > 0)
-                    {
-                        // Select the first question (after shuffling)
-                        Question selectedQuestion = allQuestions.First();
-
-                        // Remove displayed question ID
-                        displayedQuestionIds.Add(selectedQuestion.Id);
-                        if (displayedQuestionIds.Count == totalNumberOfQuestions)
-                        {
-                            displayedQuestionIds.Clear();
-                        }
-
-                        return selectedQuestion;
-                    }
-                    else
-                    {
-                        ErrorText.Text = "No questions available.";
                     }
                 }
             }
             catch (Exception ex)
             {
-                ErrorText.Text = "An error occurred: " + ex.Message;
+                ErrorText.Text = ex.Message;
             }
 
-            return null;
+            return question;
         }
 
         // Method to get the current question
@@ -263,9 +261,9 @@ namespace UWP_Kviz
             return currentQuestion;
         }
 
-        private void Provjeri_Click(object sender, RoutedEventArgs e)
+        private void Provjeri_Click_1(object sender, RoutedEventArgs e)
         {
-            ErrorText.Text=player1TimerDuration.ToString();
+            ErrorText.Text = player1TimerDuration.ToString();
             if (player1TimerDuration == 0 || player2TimerDuration == 0)
             {
                 return;
@@ -277,6 +275,7 @@ namespace UWP_Kviz
             {
                 ErrorText.Text = selectedAnswer + Environment.NewLine;
                 ErrorText.Text += currentQuestion.CorrectAnswer;
+                // Compare the selected answer with the correct answer (case-insensitive)
                 if (selectedAnswer.Equals(currentQuestion.CorrectAnswer, StringComparison.OrdinalIgnoreCase))
                 {
                     if (isFirstPlayerTurn)
@@ -374,40 +373,42 @@ namespace UWP_Kviz
         }
         private void FetchLastTwoRows()
         {
-            string connectionString = @"Data Source=D:\Skola\Niop 3g\UWP_Kviz\UWP_Kviz\Databaza.db;Version=3";
+            // Postavite svoje vlastite podatke za povezivanje s CockroachDB bazom podataka
+            string connectionString = "Host=gejtejz-13872.8nj.gcp-europe-west1.cockroachlabs.cloud;Port=26257;Database=blitzbtl;Username=Mcacic;Password=NJhhoQj-IcRgyf1ffY60nQ;SSL Mode=Require;Trust Server Certificate=true";
 
             try
             {
-                using (SQLiteConnection connection = new SQLiteConnection(connectionString))
+                // Stvaranje veze s bazom podataka
+                using (NpgsqlConnection connection = new NpgsqlConnection(connectionString))
                 {
+                    // Otvaranje veze
                     connection.Open();
 
-                    // SQLite query to fetch the last two rows from the table
+                    // SQL upit za dohvaćanje posljednja dva reda iz tablice OsobniPodaci
                     string query = "SELECT * FROM OsobniPodaci ORDER BY ID_Unos DESC LIMIT 2";
 
-                    using (SQLiteCommand command = new SQLiteCommand(query, connection))
+                    // Stvaranje naredbe koja sadrži SQL upit i povezivanje s već otvorenom vezom
+                    using (NpgsqlCommand command = new NpgsqlCommand(query, connection))
                     {
-                        using (SQLiteDataReader reader = command.ExecuteReader())
+                        // Izvršavanje upita i dohvaćanje rezultata
+                        using (NpgsqlDataReader reader = command.ExecuteReader())
                         {
-                            // Ensure there are rows returned
+                            // Provjera da li postoje redovi u rezultatu
                             if (reader.HasRows)
                             {
-                                // Counter to keep track of which row we are on
+                                // Brojač redova
                                 int rowCounter = 0;
 
+                                // Iteriranje kroz rezultat
                                 while (reader.Read())
                                 {
-                                    // Retrieve values from each column
-                                    int ID_Unos = reader.GetInt32(0);
+                                    // Dohvaćanje vrijednosti iz svakog stupca u trenutnom retku
+                                    
                                     long OIB = reader.GetInt64(1);
                                     string ime = reader.GetString(2);
                                     string prezime = reader.GetString(3);
 
-                                    // Assuming you have text blocks named accordingly: 
-                                    // idTextBlock1, questionTextBlock1, answerTextBlock1 for the second to last row
-                                    // idTextBlock2, questionTextBlock2, answerTextBlock2 for the last row
-
-                                    // Update text blocks with data from the current row
+                                    // Ažuriranje tekstualnih blokova s podacima iz baze
                                     if (rowCounter == 0)
                                     {
                                         DrugiIgracOIB.Text = $"{OIB}";
@@ -421,13 +422,13 @@ namespace UWP_Kviz
                                         PrviIgracPrezime.Text = $"{prezime}";
                                     }
 
-                                    // Increment the row counter
+                                    // Inkrementiranje brojača redova
                                     rowCounter++;
                                 }
                             }
                             else
                             {
-                                // Handle case when no rows are returned
+                                // Nema redova u rezultatu
                                 ErrorText.Text = "No rows returned by the query.";
                             }
                         }
@@ -436,14 +437,13 @@ namespace UWP_Kviz
             }
             catch (Exception ex)
             {
-                // Handle any exceptions (e.g., database connection error)
+                // Uhvatiti i prikazati bilo kakvu grešku koja se dogodi pri radu s bazom podataka
                 ErrorText.Text = "An error occurred: " + ex.Message;
             }
         }
+
+
+
     }
 }
-
-
-
-
 
