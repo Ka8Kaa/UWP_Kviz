@@ -1,7 +1,11 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
+<<<<<<< Updated upstream
 VisualStudioVersion = 17.5.33627.172
+=======
+VisualStudioVersion = 17.7.34024.191
+>>>>>>> Stashed changes
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UWP_Kviz", "UWP_Kviz.csproj", "{82F6E029-A965-4C4A-A4FC-536A3B4A1938}"
 EndProject
@@ -46,6 +50,10 @@ Global
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
+<<<<<<< Updated upstream
 		SolutionGuid = {93A6B4C3-F40E-43EB-9DCE-EA5024BDE81C}
+=======
+		SolutionGuid = {E663AA28-5589-4604-8B05-BF23F3D11B90}
+>>>>>>> Stashed changes
 	EndGlobalSection
 EndGlobal

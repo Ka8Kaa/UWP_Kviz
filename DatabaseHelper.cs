@@ -3,12 +3,12 @@ using System.IO;
 
 public static class DatabaseHelper
 {
-    private static string connectionString= @"DataSource=D:\Skola\Niop 3g\UWP_Kviz\UWP_Kviz\Databaza.db;Version=3";
+    private static string connectionString= @"DataSource=Databaza.db;Version=3";
     public static void InitializeDatabase()
     {
-        if(!File.Exists(@"D:\Skola\Niop 3g\UWP_Kviz\UWP_Kviz\Databaza.db"))
+        if(!File.Exists(connectionString))
         {
-            SQLiteConnection.CreateFile(@"D:\Skola\Niop 3g\UWP_Kviz\UWP_Kviz\Databaza.db");
+            SQLiteConnection.CreateFile(connectionString);
             using (var connection=new SQLiteConnection(connectionString))
             {
                 connection.Open();

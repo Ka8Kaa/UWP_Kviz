@@ -12889,18 +12889,30 @@
     ]
   },
   "packageFolders": {
+<<<<<<< Updated upstream
     "C:\\Users\\matej\\.nuget\\packages\\": {},
+=======
+    "C:\\Users\\Ga-delta\\.nuget\\packages\\": {},
+>>>>>>> Stashed changes
     "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {},
     "C:\\Program Files (x86)\\Microsoft SDKs\\UWPNuGetPackages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
+<<<<<<< Updated upstream
       "projectUniqueName": "C:\\Users\\matej\\OneDrive\\Radna površina\\UWP_Kviz\\UWP_Kviz.csproj",
       "projectName": "UWP_Kviz",
       "projectPath": "C:\\Users\\matej\\OneDrive\\Radna površina\\UWP_Kviz\\UWP_Kviz.csproj",
       "packagesPath": "C:\\Users\\matej\\.nuget\\packages\\",
       "outputPath": "C:\\Users\\matej\\OneDrive\\Radna površina\\UWP_Kviz\\obj\\",
+=======
+      "projectUniqueName": "C:\\Users\\Ga-delta\\Documents\\GitHub\\UWP_Kviz\\UWP_Kviz.csproj",
+      "projectName": "UWP_Kviz",
+      "projectPath": "C:\\Users\\Ga-delta\\Documents\\GitHub\\UWP_Kviz\\UWP_Kviz.csproj",
+      "packagesPath": "C:\\Users\\Ga-delta\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\Ga-delta\\Documents\\GitHub\\UWP_Kviz\\obj\\",
+>>>>>>> Stashed changes
       "projectStyle": "PackageReference",
       "skipContentFileWrite": true,
       "fallbackFolders": [
@@ -12908,7 +12920,11 @@
         "C:\\Program Files (x86)\\Microsoft SDKs\\UWPNuGetPackages\\"
       ],
       "configFilePaths": [
+<<<<<<< Updated upstream
         "C:\\Users\\matej\\AppData\\Roaming\\NuGet\\NuGet.Config",
+=======
+        "C:\\Users\\Ga-delta\\AppData\\Roaming\\NuGet\\NuGet.Config",
+>>>>>>> Stashed changes
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
